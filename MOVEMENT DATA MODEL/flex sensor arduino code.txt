@@ -1,0 +1,77 @@
+const int FLEX_PIN = 34;
+
+const int BASELINE = 4095;
+const int NUM_SAMPLES = 10;
+
+const int UPDATE_TIME = 200;
+
+int readFlexSensor() {
+
+  long total = 0;
+
+  for (int i = 0; i < NUM_SAMPLES; i++) {
+    total += analogRead(FLEX_PIN);
+    delayMicroseconds(500);
+  }
+
+  return total / NUM_SAMPLES;
+}
+
+void setup() {
+
+  Serial.begin(115200);
+
+  delay(1000);
+
+  analogReadResolution(12);
+
+  // CSV HEADER
+  Serial.println("Time_ms,Raw_ADC,Baseline,Change,Flexion_Index,Flexion_Level");
+}
+
+void loop() {
+
+  int rawValue = readFlexSensor();
+
+  int change = rawValue - BASELINE;
+
+  int absoluteChange = abs(change);
+
+  float flexionIndex =
+      ((float)absoluteChange / BASELINE) * 100.0;
+
+  String flexionLevel;
+
+  if (flexionIndex < 2) {
+    flexionLevel = "STABLE";
+  }
+  else if (flexionIndex < 5) {
+    flexionLevel = "LOW";
+  }
+  else if (flexionIndex < 10) {
+    flexionLevel = "MODERATE";
+  }
+  else {
+    flexionLevel = "HIGH";
+  }
+
+  // CSV OUTPUT
+  Serial.print(millis());
+  Serial.print(",");
+
+  Serial.print(rawValue);
+  Serial.print(",");
+
+  Serial.print(BASELINE);
+  Serial.print(",");
+
+  Serial.print(change);
+  Serial.print(",");
+
+  Serial.print(flexionIndex, 2);
+  Serial.print(",");
+
+  Serial.println(flexionLevel);
+
+  delay(UPDATE_TIME);
+}

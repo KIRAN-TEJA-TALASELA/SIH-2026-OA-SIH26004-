@@ -1,0 +1,2 @@
+Samples,Duration_s,Mean_Flexion_Index,Median_Flexion_Index,Min_Flexion_Index,Max_Flexion_Index,Flexion_Index_STD,Flexion_Index_Range,Flexion_Index_Q25,Flexion_Index_Q75,Flexion_Index_MAD,Time_STABLE_s,Time_LOW_s,Time_MODERATE_s,Time_HIGH_s,Movement_Episodes,Mean_Absolute_Velocity,Max_Absolute_Velocity,Max_Flexion_Rate,Max_Extension_Rate,AUC_Flexion_Index
+1759,360.79999999999995,2.257094940306992,0.0,0.0,23.49,6.726195748443921,23.49,0.0,0.0,0.0,324.105,0.0,0.0,36.69499999999998,8,1.0587974139127048,112.58536585365947,112.58536585365947,-110.9268292682936,813.8971499999997

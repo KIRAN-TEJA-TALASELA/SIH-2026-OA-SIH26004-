@@ -1,0 +1,36 @@
+{
+    "model": "EfficientNet-B0",
+    "classes": [
+        "KL0",
+        "KL1",
+        "KL2",
+        "KL3",
+        "KL4"
+    ],
+    "image_size": 224,
+    "batch_size": 16,
+    "stage1_epochs": 5,
+    "stage2_epochs_max": 40,
+    "focal_gamma": 2.0,
+    "optimizer": "AdamW",
+    "backbone_lr": 1e-05,
+    "classifier_lr": 0.0001,
+    "weight_decay": 0.0001,
+    "augmentation": [
+        "CLAHE",
+        "RandomRotation \u00b17 degrees",
+        "RandomAffine translation 3%",
+        "ColorJitter brightness 0.15",
+        "ColorJitter contrast 0.15"
+    ],
+    "weighted_random_sampler": true,
+    "early_stopping_patience": 8,
+    "selection_metric": "Validation Macro F1",
+    "best_validation_macro_f1": 0.6542466495530835,
+    "test_loss": 0.37055437104857486,
+    "test_accuracy": 0.6388888888888888,
+    "test_macro_precision": 0.6627204221617263,
+    "test_macro_recall": 0.6521215178565515,
+    "test_macro_f1": 0.650625188852606,
+    "test_weighted_f1": 0.6429389578166439
+}
